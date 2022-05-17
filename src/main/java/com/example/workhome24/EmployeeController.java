@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/employee")
 
 public class EmployeeController {
-    public final EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
     @GetMapping("/add")
-    public String add(@RequestParam String firstName, @RequestParam String lastName) {
+    public Employee add(@RequestParam String firstName, @RequestParam String lastName) {
         return  employeeService.add(firstName, lastName);
     }
     @GetMapping("/remove")
-    public String remove(@RequestParam String firstName, @RequestParam String lastName) {
+    public Employee remove(@RequestParam String firstName, @RequestParam String lastName) {
         return  employeeService.remove(firstName, lastName);
     }
 
     @GetMapping("/find")
-    public String find(@RequestParam String firstName, @RequestParam String lastName) {
+    public Employee find(@RequestParam String firstName, @RequestParam String lastName) {
         return  employeeService.find(firstName, lastName);
     }
 }
